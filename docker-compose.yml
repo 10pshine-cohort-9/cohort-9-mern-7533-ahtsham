@@ -4,7 +4,9 @@ services:
     container_name: notes-mysql
     restart: unless-stopped
     ports:
-      - '3306:3306'
+      # Bound to loopback only. A bare "3306:3306" would publish the database on
+      # every network interface, reachable by anything on the same network.
+      - '127.0.0.1:3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
