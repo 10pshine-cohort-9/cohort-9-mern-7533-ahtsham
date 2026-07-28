@@ -1,7 +1,7 @@
 # 0004 — JWT in an httpOnly cookie
 
 **Status:** Accepted
-**Date:** 2026-07-29
+**Date:** 2026-07-28
 
 ## Context
 
@@ -23,15 +23,24 @@ and requests are sent with credentials enabled.
 
 ## Consequences
 
-- A successful XSS payload cannot read the session token, because JavaScript has
-  no access to an httpOnly cookie. This is the main reason for the decision, and
-  it composes with the server-side HTML sanitisation added alongside the note
-  editor.
+- A successful XSS payload cannot **read or exfiltrate** the session token,
+  because JavaScript has no access to an httpOnly cookie. This is the main reason
+  for the decision.
+- This reduces the blast radius of XSS; it does not neutralise it. The browser
+  still attaches the cookie automatically, so injected script can issue
+  authenticated requests as the victim for as long as the page is open. What it
+  prevents is the token leaving the browser and being replayed later, from
+  anywhere, until it expires. Preventing the injection itself is the job of the
+  server-side HTML sanitisation added alongside the note editor, which is why
+  both measures are required rather than either alone.
 - CORS must be configured with an explicit origin and `credentials: true`;
   a wildcard origin will not work with credentialed requests.
-- `SameSite=Lax` covers the common CSRF vectors for this application's routes.
-  If a state-changing `GET` endpoint is ever added, a CSRF token becomes
-  necessary — none is planned.
+- `SameSite=Lax` is one CSRF layer, not the whole defence. It suppresses
+  cross-site cookies on unsafe methods, but `GET` requests still carry the cookie
+  on top-level navigation. Two rules follow and are treated as invariants: no
+  endpoint may change state on `GET`, and unsafe requests are additionally
+  checked against an allowed `Origin`. If either invariant is ever relaxed, a
+  per-request CSRF token becomes mandatory.
 - Logout must clear the cookie server-side rather than deleting a client value.
 - Local development runs over HTTP, so the `Secure` flag is set from configuration
   rather than hard-coded.
