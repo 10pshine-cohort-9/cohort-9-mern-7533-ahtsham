@@ -26,7 +26,11 @@ export default tseslint.config(
       // CodeRabbit flags missing types as HIGH severity — enforce it ourselves first.
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/consistent-type-imports': 'warn',
-      // Application logging goes through Pino (added in PR #2), never console.
+      // Application logging goes through Pino (added in PR #2). `console.log` is
+      // a warning so it does not survive review; `console.warn` and
+      // `console.error` stay allowed for the narrow cases that run before or
+      // after the logger exists — config validation failure at boot, and the
+      // last-resort handler for an uncaught exception.
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       eqeqeq: ['error', 'smart'],
     },
