@@ -1,7 +1,7 @@
 # 0002 — Use MySQL with Prisma, not MongoDB
 
 **Status:** Accepted
-**Date:** 2026-07-29
+**Date:** 2026-07-28
 
 ## Context
 

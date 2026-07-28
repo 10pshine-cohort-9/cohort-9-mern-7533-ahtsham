@@ -13,7 +13,7 @@ attacker-controlled input.
 
 ### Accepted development-only advisories
 
-As of 2026-07-29, `npm audit` reports 6 advisories (5 high, 1 low), all reached
+As of 2026-07-28, `npm audit` reports 6 advisories (5 high, 1 low), all reached
 through `mocha`'s dependency tree:
 
 | Package                | Advisory                                | Reached via              |

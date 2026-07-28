@@ -3,7 +3,7 @@
 Feature slices. One folder per domain concept, each containing the full vertical
 stack for that feature:
 
-```
+```text
 modules/notes/
 ├── notes.routes.ts       HTTP paths and request validation
 ├── notes.controller.ts   HTTP in, HTTP out

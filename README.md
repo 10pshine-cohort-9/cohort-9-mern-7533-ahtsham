@@ -64,7 +64,7 @@ npm run db:down
 
 ## Project layout
 
-```
+```text
 .
 ├── server/              # Express + TypeScript API
 │   └── src/
@@ -85,7 +85,7 @@ The `client/` React workspace is introduced in a later pull request.
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/)
 and are enforced automatically by commitlint via a Husky `commit-msg` hook:
 
-```
+```text
 feat: add note search endpoint
 fix: reject expired session cookies
 chore: add eslint and prettier

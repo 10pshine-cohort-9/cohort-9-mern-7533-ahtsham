@@ -10,7 +10,7 @@ and TipTap for rich text.
 
 ## Structure
 
-```
+```text
 client/src/
 ├── api/            Axios instance and typed endpoint functions
 ├── components/     Reusable presentational components

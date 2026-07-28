@@ -1,7 +1,7 @@
 # 0005 — TypeScript in both workspaces
 
 **Status:** Accepted
-**Date:** 2026-07-29
+**Date:** 2026-07-28
 
 ## Context
 

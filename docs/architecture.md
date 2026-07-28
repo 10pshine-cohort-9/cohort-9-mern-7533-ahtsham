@@ -92,7 +92,7 @@ frontend has a single place to handle failures.
 
 ### `server/`
 
-```
+```text
 server/
 ├── src/
 │   ├── config/         Environment loading and validation
@@ -119,7 +119,7 @@ Express application without a listening socket.
 
 ### `client/` (added in a later pull request)
 
-```
+```text
 client/
 ├── src/
 │   ├── api/            Axios instance and typed endpoint functions
